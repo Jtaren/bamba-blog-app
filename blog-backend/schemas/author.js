@@ -10,7 +10,7 @@ export default{
             type: "string",
         },
         {
-            name: "avatar",
+        name: "avatar",
         title: "Avatar",
         type: "image",
         options:{
