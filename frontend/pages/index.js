@@ -17,7 +17,7 @@ export default function Home({posts}) {
    <Format>
       <Hero></Hero>
       <Articles post={posts}></Articles>
-      <MostPopular></MostPopular>
+      {/* <MostPopular></MostPopular> */}
    </Format>
   )
 }
@@ -26,7 +26,7 @@ export default function Home({posts}) {
 
 
 export const getStaticProps = async ({ preview = false}) => {
-  const posts = await client.fetch(`*[_type == "post"]`);
+  const posts = await client.fetch(groq`*[_type == "post"]`);
   return {
     props: {
       posts,

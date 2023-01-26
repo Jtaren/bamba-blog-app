@@ -2,7 +2,7 @@ export default {
     Trending : [
         {
             id: 1,
-            title: "Your most unhappy customers are your greatest source of learning",
+            title: "Bamba Global Community",
             subtitle: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
             category: "Business, Travel",
             img : "/images/img1.jpg",
