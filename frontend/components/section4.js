@@ -46,7 +46,7 @@ function Post({ data }){
     return (
         <div className="flex gap-5">
             <div className="image flex flex-col justify-start">
-                <Link href={`/posts/${id}`}><a><Image src={img || ""}  className="rounded" width={300} height={250} /></a></Link>
+                <Link href={`/posts/${id}`}><a><Image src={img || ""}  className="rounded" width={300} height={250} alt={`${title}'s picture`}/></a></Link>
             </div>
             <div className="info flex justify-center flex-col">
                 <div className="cat">

@@ -31,10 +31,10 @@ export default function hero() {
             
             <Swiper
                 slidesPerView={1}
-                // loop={true}
-                // autoplay= {{
-                //     delay: 2000
-                // }}
+                loop={true}
+                autoplay= {{
+                    delay: 3500
+                }}
                 >
                 {
                     data.map((value, index) => (
@@ -57,12 +57,12 @@ function Slide({ data }){
     return (
         <div className="grid md:grid-cols-2">
             <div className="image">
-                <div href={`/posts/${id}`}><a><Image src={img || "/"} width={600} height={600} /></a></div>
+                <div href={`/posts/${id}`}><a><img src={img || "/"} width={600} height={600} alt={`${title}'s picture` }/></a></div>
             </div>
             <div className="info flex justify-center flex-col">
                 
                 <div className="title">
-                    <Link href={`/posts/${id}`}><h3 className="text-3xl md:text-6xl font-bold text-gray-800 hover:text-gray-600">{title || "Unknown"}</h3></Link>
+                    <div href={`/posts/${id}`}><h3 className="text-3xl md:text-6xl font-bold text-gray-800 hover:text-gray-600">{title || "Unknown"}</h3></div>
                 </div>
                 <p className="text-gray-500 py-3">
                     {description || "description"}

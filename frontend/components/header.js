@@ -10,14 +10,14 @@ export default function header() {
             </div>
             <div className="shrink w-80 sm:order-2">
                 <Link href={"/"}>
-                    <a className="font-bold uppercase text-3xl">Bamba Blog</a>
+                    <a className="font-bold uppercase text-[#fb1c48] text-3xl">Bamba Blog</a>
                 </Link>
             </div>
             <div className="w-96 order-3 flex justify-center">
                 <div className="flex gap-6">
-                    <Link href={"/"}><a><ImFacebook color="#888888" /></a></Link>
-                    <Link href={"/"}><a><ImTwitter color="#888888" /></a></Link>                    
-                    <Link href={"/"}><a><ImYoutube color="#888888" /></a></Link>
+                    <Link href={"/"}><a><ImFacebook color="#802ccc" /></a></Link>
+                    <Link href={"/"}><a><ImTwitter color="#802ccc" /></a></Link>                    
+                    <Link href={"/"}><a><ImYoutube color="#802ccc" /></a></Link>
                 </div>
             </div>
         </div>

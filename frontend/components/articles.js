@@ -9,10 +9,10 @@ import imageUrlBuilder  from '@sanity/image-url'
 
 export default function articles({post}) {
 
-    const {isLoading, isError } = fetcher('api/posts/')
+    // const {isLoading, isError } = fetcher('api/posts/')
     
-    if(isLoading) return <Spinner></Spinner>;
-    if(isError) return <Error></Error>
+    // if(isLoading) return <Spinner></Spinner>;
+    // if(isError) return <Error></Error>
 
 
 
@@ -52,16 +52,16 @@ function Post( { postData } ){
                 <div className="cat">
                     {/* <Link href={`/posts/${_id}`}><a className="text-orange-600 hover:text-orange-800">{category || "Unknown"}</a></Link> */}
                     <Link href="/posts/[slug]"
-                as={`/posts/${slug.current}`} ><a className="text-gray-800 hover:text-gray-600">- {new Date(_createdAt).toDateString() || "Unknown"}</a></Link>
+                as={`/posts/${slug.current}`} ><a className="text-gray-800 hover:text-[#fb1c48]">- {new Date(_createdAt).toDateString() || "Unknown"}</a></Link>
                 </div>
                 <div className="title">
                     <Link href="/posts/[slug]"
-                as={`/posts/${slug.current}`} ><a className="text-xl font-bold text-gray-800 hover:text-gray-600">{title || "Title"}</a></Link>
+                as={`/posts/${slug.current}`} ><a className="text-xl font-bold text-[802ccc] hover:text-gray-600">{title || "Title"}</a></Link>
                 </div>
                 <p className="text-gray-500 py-3">
                    {body.blockContent}
                 </p>
-                <p>{author.name}</p>
+                <p>{author.userName}</p>
             </div>
         </div>
     )

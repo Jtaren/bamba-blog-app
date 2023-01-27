@@ -29,8 +29,8 @@ export default{
     ],
     preview:{
         select:{
-            title: "username",
-            media: "avatar",
+            title: "name",
+            media: "image",
         },
     },
 }
