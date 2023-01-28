@@ -6,7 +6,8 @@ import Link from 'next/link'
 import {client} from '../../lib/client'
 import Author from '../../components/_child/author'
 import Format from '../../layout/format'
-import Image from 'next/image'
+import { useRouter } from 'next/router'
+// import Image from 'next/image'
 import fetcher from '../../lib/fetcher'
 import Spinner from '../../components/_child/spinner'
 import Error from '../../components/_child/error'
@@ -14,29 +15,63 @@ import BlockContent from '@sanity/block-content-to-react'
 import PortableText from "@sanity/block-content-to-react"
 
 
-const input = [
-  {
-    _type: 'block',
-    children: [
-      {
-        _key: 'a1ph4',
-        _type: 'span',
-        marks: ['s0m3k3y'],
-        text: 'Sanity',
-      },
-    ],
-    markDefs: [
-      {
-        _key: 's0m3k3y',
-        _type: 'highlight',
-        color: '#E4FC5B',
-      },
-    ],
-  },
-]
 
-function MyParagraphSerializer(props) {
-  return <p>{props.children} </p>
+
+// const router = useRouter()
+// const slug  = router.query.slug || [];
+const serializers = {
+  types: {
+    block: (props) => {
+      const { style = "normal" } = props.node;
+
+      if (/^h\d/.test(style)) {
+        const level = style.replace(/[^\d]/g, "");
+        return React.createElement(
+          style,
+          { className: `heading-${level}` },
+          props.children
+        );
+      }
+
+      if (style === "blockquote") {
+        return <blockquote>- {props.children}</blockquote>;
+      }
+
+      // Fall back to default handling
+      return BlockContent.defaultSerializers.types.block(props);
+    },
+    code: (props) =>
+      console.log("code block", props) || (
+        <pre data-language={props.node.language}>
+          <code>{props.node.code}</code>
+        </pre>
+      )
+  },
+  list: (props) =>
+    console.log("list", props) ||
+    (props.type === "bullet" ? (
+      <ul>{props.children}</ul>
+    ) : (
+      <ol>{props.children}</ol>
+    )),
+  listItem: (props) =>
+    console.log("list", props) ||
+    (props.type === "bullet" ? (
+      <li>{props.children}</li>
+    ) : (
+      <li>{props.children}</li>
+    )),
+  marks: {
+    strong: (props) =>
+      console.log("strong", props) || <strong>{props.children}</strong>,
+    em: (props) => console.log("em", props) || <em>{props.children}</em>,
+    code: (props) => console.log("code", props) || <code>{props.children}</code>
+  }
+};
+
+const MyParagraphSerializer = props => {
+  const { children } = props
+  return <p className="custom-paragraph">{children}</p>
 }
 
 function MyImageSerializer(props) {
@@ -71,8 +106,8 @@ const ptComponents = {
   
   const Post = ({post}) => {
 
-console.log("Index post,", post
-);
+// console.log("Index post,", post
+// );
     
     const {
       title = 'Missing title',
@@ -80,16 +115,16 @@ console.log("Index post,", post
       author,
       mainImage,
       avatar,
-      body = {}
+      body 
     } = post
 
     console.log("Author data", author)
 
         // Blog Loader
-    const { isLoading, isError } = fetcher('api/posts')
+    // const { isLoading, isError } = fetcher('api/posts')
         
-        if(isLoading) return <Spinner></Spinner>;
-        if(isError) return <Error></Error>
+    //     if(isLoading) return <Spinner></Spinner>;
+    //     if(isError) return <Error></Error>
     
 
 
@@ -130,23 +165,10 @@ console.log("Index post,", post
         </div>
         <BlockContent
             blocks={body}
-            client={client}
+            
+            server={client}
             serializers={{
-              types: {
-                  blockContent: props => (
-                      <div className="blockContent text-black py-2">
-                          <PortableText 
-                              blocks={props.children}
-                              serializers={{
-                                  types: {
-                                      paragraph: MyParagraphSerializer,
-                                      image: MyImageSerializer
-                                  }
-                              }}
-                          />
-                      </div>
-                  ),
-              },
+              serializers
           }}
         />
         </div>
@@ -165,7 +187,7 @@ export async function getStaticPaths() {
 
   return {
     paths: paths.map((slug) => ({params: {slug}})),
-    fallback: true,
+    fallback: false,
   }
 }
 

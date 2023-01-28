@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import imageUrlBuilder from "@sanity/image-url";
 
@@ -15,6 +15,7 @@ export default function author({ name, img }) {
     <div className="author flex py-5">
       <img
         src={urlFor(img).width(60).url() || ""}
+        loading="lazy"
         width={60}
         height={60}
         className="rounded-full"

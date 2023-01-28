@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Image from "next/image"
+// import Image from "next/image"
 import Author from "./_child/author"
 import fetcher from '../lib/fetcher'
 import Spinner from "./_child/spinner"
@@ -9,7 +9,7 @@ import imageUrlBuilder  from '@sanity/image-url'
 
 export default function articles({post}) {
 
-    // const {isLoading, isError } = fetcher('api/posts/')
+    // const {isLoading, isError } = fetcher('api/posts')
     
     // if(isLoading) return <Spinner></Spinner>;
     // if(isError) return <Error></Error>
@@ -45,23 +45,23 @@ function Post( { postData } ){
     return (
         <div className="item">
             <div className="images">
-                <Link href="/posts/[slug]"
-                as={`/posts/${slug.current}`}  ><img src={urlFor(mainImage).width(500).height(350).url() || "/"} alt={`${title}'s picture`} className="rounded" width={500} height={350} /></Link>
+                <Link
+        href={`/posts/${slug.current}`}  ><img src={urlFor(mainImage).width(500).height(350).url() || "/"} alt={`${title}'s picture`} className="rounded" width={500} height={350} /></Link>
             </div>
             <div className="info flex justify-center flex-col py-4">
                 <div className="cat">
                     {/* <Link href={`/posts/${_id}`}><a className="text-orange-600 hover:text-orange-800">{category || "Unknown"}</a></Link> */}
-                    <Link href="/posts/[slug]"
-                as={`/posts/${slug.current}`} ><a className="text-gray-800 hover:text-[#fb1c48]">- {new Date(_createdAt).toDateString() || "Unknown"}</a></Link>
+                    <Link
+                href={`/posts/${slug.current}`} ><a className="text-gray-800 hover:text-[#fb1c48]">- {new Date(_createdAt).toDateString() || "Unknown"}</a></Link>
                 </div>
                 <div className="title">
-                    <Link href="/posts/[slug]"
-                as={`/posts/${slug.current}`} ><a className="text-xl font-bold text-[802ccc] hover:text-gray-600">{title || "Title"}</a></Link>
+                    <Link
+                href={`/posts/${slug.current}`} ><a className="text-xl font-bold text-[802ccc] hover:text-gray-600">{title || "Title"}</a></Link>
                 </div>
                 <p className="text-gray-500 py-3">
                    {body.blockContent}
                 </p>
-                <p>{author.userName}</p>
+            
             </div>
         </div>
     )
