@@ -1,20 +1,23 @@
 // import Image from "next/image";
 import Link from "next/link";
 import imageUrlBuilder from "@sanity/image-url";
+import { client } from "../../lib/client";
 
-export default function author({ name, img }) {
-  console.log("This is from Author", name);
+export default function author({ name, image }) {
 
-  if (!name && !img) return <></>;
+
+  if (!name && !image) return <></>;
 
   function urlFor(source) {
     return imageUrlBuilder(client).image(source);
   }
 
   return (
-    <div className="author flex py-5">
+    <>
+    
+    <div className="author flex py-5 justify-center">
       <img
-        src={urlFor(img).width(60).url() || ""}
+        src={urlFor(image).width(60).height(60).url() || ""}
         loading="lazy"
         width={60}
         height={60}
@@ -31,5 +34,6 @@ export default function author({ name, img }) {
      
       </div>
     </div>
+    </>
   );
 }

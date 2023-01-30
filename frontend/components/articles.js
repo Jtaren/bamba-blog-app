@@ -35,7 +35,7 @@ export default function articles({post}) {
 
 
 function Post( { postData } ){
-    const {_id, title, _createdAt, slug="", mainImage, author, body } = postData;
+    const {_id, title, _createdAt,publishedAt, slug="", mainImage, author, body } = postData;
 
     function urlFor (source) {
         return imageUrlBuilder(client).image(source)
@@ -52,14 +52,14 @@ function Post( { postData } ){
                 <div className="cat">
                     {/* <Link href={`/posts/${_id}`}><a className="text-orange-600 hover:text-orange-800">{category || "Unknown"}</a></Link> */}
                     <Link
-                href={`/posts/${slug.current}`} ><a className="text-gray-800 hover:text-[#fb1c48]">- {new Date(_createdAt).toDateString() || "Unknown"}</a></Link>
+                href={`/posts/${slug.current}`} ><a className="text-gray-800 hover:text-[#fb1c48]">- {new Date(publishedAt).toDateString() || "Unknown"}</a></Link>
                 </div>
                 <div className="title">
                     <Link
-                href={`/posts/${slug.current}`} ><a className="text-xl font-bold text-[802ccc] hover:text-gray-600">{title || "Title"}</a></Link>
+                href={`/posts/${slug.current}`} ><a className="text-2xl font-bold text-[802ccc] hover:text-gray-600">{title || "Title"}</a></Link>
                 </div>
                 <p className="text-gray-500 py-3">
-                   {body.blockContent}
+                   
                 </p>
             
             </div>

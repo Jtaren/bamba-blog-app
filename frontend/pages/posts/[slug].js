@@ -13,6 +13,7 @@ import Spinner from '../../components/_child/spinner'
 import Error from '../../components/_child/error'
 import BlockContent from '@sanity/block-content-to-react'
 import PortableText from "@sanity/block-content-to-react"
+import SanityBlockContent from '@sanity/block-content-to-react'
 
 
 
@@ -21,62 +22,12 @@ import PortableText from "@sanity/block-content-to-react"
 // const slug  = router.query.slug || [];
 const serializers = {
   types: {
-    block: (props) => {
-      const { style = "normal" } = props.node;
-
-      if (/^h\d/.test(style)) {
-        const level = style.replace(/[^\d]/g, "");
-        return React.createElement(
-          style,
-          { className: `heading-${level}` },
-          props.children
-        );
-      }
-
-      if (style === "blockquote") {
-        return <blockquote>- {props.children}</blockquote>;
-      }
-
-      // Fall back to default handling
-      return BlockContent.defaultSerializers.types.block(props);
-    },
-    code: (props) =>
-      console.log("code block", props) || (
-        <pre data-language={props.node.language}>
-          <code>{props.node.code}</code>
-        </pre>
-      )
-  },
-  list: (props) =>
-    console.log("list", props) ||
-    (props.type === "bullet" ? (
-      <ul>{props.children}</ul>
-    ) : (
-      <ol>{props.children}</ol>
-    )),
-  listItem: (props) =>
-    console.log("list", props) ||
-    (props.type === "bullet" ? (
-      <li>{props.children}</li>
-    ) : (
-      <li>{props.children}</li>
-    )),
-  marks: {
-    strong: (props) =>
-      console.log("strong", props) || <strong>{props.children}</strong>,
-    em: (props) => console.log("em", props) || <em>{props.children}</em>,
-    code: (props) => console.log("code", props) || <code>{props.children}</code>
+    blockContent: (props) => {
+      return props.children
+    }
   }
-};
-
-const MyParagraphSerializer = props => {
-  const { children } = props
-  return <p className="custom-paragraph">{children}</p>
 }
 
-function MyImageSerializer(props) {
-  return <img src={urlFor(props.node.asset).url()} alt={props.node.alt} />
-}
 
 
 function urlFor (source) {
@@ -112,19 +63,18 @@ const ptComponents = {
     const {
       title = 'Missing title',
       name = 'Missing name',
-      author,
+      authorImage,
       mainImage,
-      avatar,
-      body 
+      body
     } = post
 
-    console.log("Author data", author)
+    console.log("Author data", post.author)
 
         // Blog Loader
-    // const { isLoading, isError } = fetcher('api/posts')
+    const { isLoading, isError } = fetcher('api/posts')
         
-    //     if(isLoading) return <Spinner></Spinner>;
-    //     if(isError) return <Error></Error>
+        if(isLoading) return <Spinner></Spinner>;
+        if(isError) return <Error></Error>
     
 
 
@@ -132,44 +82,29 @@ const ptComponents = {
       <Format>
     <section className='container mx-auto md:px-2 py-16 w-1/2'>
 
+    <h2 className="text-3xl text-center text-[#802ccc] pr-6">Author</h2>
     <div className='flex justify-center'>
 
-      {author && (
-             <div className="author flex py-5">
-             <img
-               src={urlFor(mainImage).width(60).url() || ""}
-               loading="lazy"
-               width={60}
-               height={60}
-               className="rounded-full"
-               alt={`${name}'s picture`}
-             />
-             <div className="flex flex-col justify-center px-4">
-               <Link href={"/"}>
-                 <a className="text-md font-bold text-gray-800 hover:text-gray-600">
-                   {author.username || "No Name"}
-                 </a>
-               </Link>
-               {/* <span className="text-sm text-gray-500">{designation || ""}</span> */}
-            
-             </div>
-           </div>
+      {authorImage && (
+        
+            <Author name={name} image={authorImage} />
       )}
 
     </div>
-    <div className="post py-10">
+    <div className="post py-10 justify-center text-left text-[1.5rem]">
 
       <h1 className='font-bold text-4xl text-center pb-5'>{title}</h1>
       <div className="py-10">
        {mainImage && <img src={urlFor(mainImage).width(900).url() || "/"} loading="lazy" width={900} height={600}/>}
         </div>
-        <BlockContent
+        <SanityBlockContent className="justify-center"
             blocks={body}
+            serializers={serializers}
+            projectId="ek734hes"
+            dataset="production"
+            imageUrlBuilder={urlFor}
+            imageOptions={{ w: 320, h: 240, fit: 'max' }} 
             
-            server={client}
-            serializers={{
-              serializers
-          }}
         />
         </div>
 
@@ -179,7 +114,13 @@ const ptComponents = {
 }
 
 const query = `*[_type == "post" && slug.current == $slug][0]
-`
+{
+  title,
+  "name": author->name,
+  mainImage,
+  "authorImage": author->image,
+  body
+}`
 export async function getStaticPaths() {
   const paths = await client.fetch(
     `*[_type == "post" && defined(slug.current)][].slug.current`
