@@ -3,7 +3,7 @@ export default {
         {
             id: 1,
             title: "Bamba Global Community",
-            img : "/images/img1.jpg",
+            img : "/images/bamba1.jpeg",
             description: `
             Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind 
             text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
@@ -13,7 +13,7 @@ export default {
         {
             id: 2,
             title: "Bamba Global Community",
-            img : "/images/img2.jpg",
+            img : "/images/bamba2.jpeg",
             description: `
             Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind 
             text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
@@ -45,7 +45,7 @@ export default {
             title: "We are blockchain tutors",
             subtitle: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
             category: "Business, Travel",
-            img : "/images/img5.png",
+            img : "/images/bamba5.jpeg",
             description: `
             Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind 
             text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
