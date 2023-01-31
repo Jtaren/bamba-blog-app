@@ -82,7 +82,7 @@ const ptComponents = {
       <Format>
     <section className='container mx-auto md:px-2 py-16 w-1/2'>
 
-    <h2 className="text-3xl text-center text-[#802ccc] pr-6">Author</h2>
+    <h2 className="text-3xl text-center pr-6">Author</h2>
     <div className='flex justify-center'>
 
       {authorImage && (
