@@ -41,7 +41,7 @@ export default function hero() {
                         <SwiperSlide key={index}><Slide data={value}></Slide></SwiperSlide>
                     ))
                 }
-            ...
+            
             </Swiper>
 
             

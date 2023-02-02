@@ -8,10 +8,10 @@ import Error from "./_child/error"
 
 export default function mostPopular() {
 
-    const { data, isLoading, isError } = fetcher('api/popular')
+    // const { data, isLoading, isError } = fetcher('api/popular')
     
-    if(isLoading) return <Spinner></Spinner>;
-    if(isError) return <Error></Error>
+    // if(isLoading) return <Spinner></Spinner>;
+    // if(isError) return <Error></Error>
 
   return (
     <section className="container mx-auto md:px-20 py-16">
