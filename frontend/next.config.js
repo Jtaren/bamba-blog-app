@@ -1,15 +1,15 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   reactStrictMode: true,
 
-  images: {
-	domains: ['cdn.sanity.io'],
-	loader: 'custom'
-}
-}
+//   images: {
+// 	domains: ['cdn.sanity.io'],
+// 	loader: 'custom'
+// }
+// }
 
 
-module.exports = nextConfig
+// module.exports = nextConfig
 
 
 module.exports = {
