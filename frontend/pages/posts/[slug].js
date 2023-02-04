@@ -121,16 +121,16 @@ const query = `*[_type == "post" && slug.current == $slug][0]
   "authorImage": author->image,
   body
 }`
-export async function getStaticPaths() {
-  const paths = await client.fetch(
-    `*[_type == "post" && defined(slug.current)][].slug.current`
-  )
+// export async function getStaticPaths() {
+//   const paths = await client.fetch(
+//     `*[_type == "post" && defined(slug.current)][].slug.current`
+//   )
 
-  return {
-    paths: paths.map((slug) => ({params: {slug}})),
-    fallback: false,
-  }
-}
+//   return {
+//     paths: paths.map((slug) => ({params: {slug}})),
+//     fallback: false,
+//   }
+// }
 
 export async function getServerSideProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
