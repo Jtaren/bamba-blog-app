@@ -11,3 +11,14 @@ const nextConfig = {
 
 module.exports = nextConfig
 
+
+module.exports = {
+  // ... other configuration options
+  // add the following option
+  exportPathMap: function() {
+    return {
+      '/': { page: '/' },
+      '/index.html': { page: '/' }
+    };
+  }
+};
