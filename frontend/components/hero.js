@@ -33,7 +33,7 @@ export default function hero() {
                 slidesPerView={1}
                 loop={true}
                 autoplay= {{
-                    delay: 3500
+                    delay: 3600
                 }}
                 >
                 {
