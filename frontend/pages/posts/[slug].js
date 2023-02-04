@@ -71,10 +71,10 @@ const ptComponents = {
     console.log("Author data", post.author)
 
         // Blog Loader
-    const { isLoading, isError } = fetcher('api/posts')
+    // const { isLoading, isError } = fetcher('api/posts')
         
-        if(isLoading) return <Spinner></Spinner>;
-        if(isError) return <Error></Error>
+    //     if(isLoading) return <Spinner></Spinner>;
+    //     if(isError) return <Error></Error>
     
 
 
