@@ -11,16 +11,16 @@
 
 // module.exports = nextConfig
 
-module.exports = {
-  async rewrites() {
-      return [
-        {
-          source: '/api/:path*',
-          destination: 'https:bamba-blog.netlify.app/:path*',
-        },
-      ]
-    },
-};
+// module.exports = {
+//   async rewrites() {
+//       return [
+//         {
+//           source: '/api/:path*',
+//           destination: 'https:/:path*',
+//         },
+//       ]
+//     },
+// };
 
 
 module.exports = {
