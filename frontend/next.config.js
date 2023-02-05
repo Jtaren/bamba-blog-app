@@ -12,19 +12,15 @@
 // module.exports = nextConfig
 
 module.exports = {
-  env: {
-    API_URL: "https://bamba-blog.netlify.app"
-  },
   async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: `${process.env.API_URL}/:path*`
-      }
-    ];
-  }
+      return [
+        {
+          source: '/api/:path*',
+          destination: 'https:bamba-blog.netlify.app/:path*',
+        },
+      ]
+    },
 };
-
 
 
 module.exports = {
