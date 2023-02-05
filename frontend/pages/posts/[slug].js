@@ -135,12 +135,11 @@ const query = `*[_type == "post" && slug.current == $slug][0]
 export async function getServerSideProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params
-  const post = await client.fetch(query, { slug })
+  const data = await client.fetch(query, { slug })
+
+  
   return {
-    props: {
-      post
-    },
-    revalidate: 10,
-  }
+    props: {post: data},
+   }
 }
 export default Post
