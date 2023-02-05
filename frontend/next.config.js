@@ -13,7 +13,7 @@
 
 module.exports = {
   env: {
-    API_URL: "https://api.sanity.io"
+    API_URL: "https://bamba-blog.netlify.app"
   },
   async rewrites() {
     return [
