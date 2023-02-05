@@ -12,15 +12,19 @@
 // module.exports = nextConfig
 
 module.exports = {
+  env: {
+    API_URL: "https://api.sanity.io"
+  },
   async rewrites() {
-      return [
-        {
-          source: '/api/:path*',
-          destination: 'https://api.example.com/:path*',
-        },
-      ]
-    },
+    return [
+      {
+        source: "/api/:path*",
+        destination: `${process.env.API_URL}/:path*`
+      }
+    ];
+  }
 };
+
 
 
 module.exports = {
