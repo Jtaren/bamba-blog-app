@@ -11,6 +11,17 @@
 
 // module.exports = nextConfig
 
+module.exports = {
+  async rewrites() {
+      return [
+        {
+          source: '/api/:path*',
+          destination: 'http://localhost:3000/api/:path*',
+        },
+      ]
+    },
+};
+
 
 module.exports = {
   // ... other configuration options
