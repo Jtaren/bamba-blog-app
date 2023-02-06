@@ -3,13 +3,15 @@ import Footer from "../components/footer"
 import Head from "next/head"
 
 export default function format( { children }){
+
+
     return (
         <>
             <Head>
                 <title>Bamba community</title>
             </Head>
 
-            <Header></Header>
+            <Header posts={posts}></Header>
             <main>{children}</main>
             <Footer></Footer>
         </>

@@ -12,9 +12,9 @@ import MostPopular from '../components/mostPopular';
 
 
 export default function Home({posts}) {
-  console.log(posts)
+ 
   return (
-   <Format>
+   <Format posts={posts}>
       <Hero></Hero>
       <Articles post={posts}></Articles>
       {/* <MostPopular></MostPopular> */}
