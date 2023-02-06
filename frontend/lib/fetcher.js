@@ -1,6 +1,8 @@
 import UseSWR from 'swr';
 
-const baseURL = "http://localhost:3000/";
+const baseURL = process.env.NODE_ENV === 'production' ?
+'https://bamba-blog.netlify.app/' :
+'http://localhost:3000/';
 
 const response = (...args) =>
   fetch(...args, {
