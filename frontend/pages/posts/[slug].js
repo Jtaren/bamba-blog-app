@@ -16,10 +16,6 @@ import PortableText from "@sanity/block-content-to-react"
 import SanityBlockContent from '@sanity/block-content-to-react'
 
 
-
-
-// const router = useRouter()
-// const slug  = router.query.slug || [];
 const serializers = {
   types: {
     blockContent: (props) => {
@@ -57,8 +53,6 @@ const ptComponents = {
   
   const Post = ({post}) => {
 
-// console.log("Index post,", post
-// );
     
     const {
       title = 'Missing title',
@@ -71,10 +65,10 @@ const ptComponents = {
     console.log("Author data", post.author)
 
         // Blog Loader
-    // const { isLoading, isError } = fetcher('api/posts')
+    const { isLoading, isError } = fetcher('api/posts')
         
-    //     if(isLoading) return <Spinner></Spinner>;
-    //     if(isError) return <Error></Error>
+        if(isLoading) return <Spinner></Spinner>;
+        if(isError) return <Error></Error>
     
 
 
@@ -121,16 +115,7 @@ const query = `*[_type == "post" && slug.current == $slug][0]
   "authorImage": author->image,
   body
 }`
-// export async function getStaticPaths() {
-//   const paths = await client.fetch(
-//     `*[_type == "post" && defined(slug.current)][].slug.current`
-//   )
 
-//   return {
-//     paths: paths.map((slug) => ({params: {slug}})),
-//     fallback: false,
-//   }
-// }
 
 export async function getServerSideProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"

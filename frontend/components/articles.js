@@ -9,10 +9,10 @@ import imageUrlBuilder  from '@sanity/image-url'
 
 export default function articles({post}) {
 
-    // const {isLoading, isError } = fetcher('api/posts')
+    const {isLoading, isError } = fetcher('api/posts')
     
-    // if(isLoading) return <Spinner></Spinner>;
-    // if(isError) return <Error></Error>
+    if(isLoading) return <Spinner></Spinner>;
+    if(isError) return <Error></Error>
 
 
 
