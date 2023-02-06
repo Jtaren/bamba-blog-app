@@ -5,7 +5,7 @@ const baseURL = "http://localhost:3000/";
 const response = (...args) =>
   fetch(...args, {
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': 'https://bamba-blog.netlify.app',
     },
   })
     .then(res => res.json());
