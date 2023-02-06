@@ -1,21 +1,21 @@
 import { ImFacebook, ImTwitter, ImYoutube } from "react-icons/im";
 import Link from 'next/link'
-import React, {useState} from "react"
+// import React, {useState} from "react"
 
 export default function header({posts}) {
 
     
-    const [searchTerm, setSearchTerm] = useState('');
-    const [filteredData, setFilteredData] = useState(posts);
+    // const [searchTerm, setSearchTerm] = useState('');
+    // const [filteredData, setFilteredData] = useState(posts);
   
-    const handleSearch = event => {
-      setSearchTerm(event.target.value);
-      setFilteredData(
-        posts.filter(blog =>
-          blog.title.toLowerCase().includes(searchTerm.toLowerCase())
-          )
-          );
-        };
+    // const handleSearch = event => {
+    //   setSearchTerm(event.target.value);
+    //   setFilteredData(
+    //     posts.filter(blog =>
+    //       blog.title.toLowerCase().includes(searchTerm.toLowerCase())
+    //       )
+    //       );
+    //     };
    
 
   return (
