@@ -48,7 +48,7 @@ function Post( { postData } ){
                 <Link
         href={`/posts/${slug.current}`}  ><img src={urlFor(mainImage).width(500).height(350).url() || "/"} alt={`${title}'s picture`} className="rounded" width={500} height={350} /></Link>
             </div>
-            <div className="info flex justify-center flex-col py-4">
+            <div className="info flex justify-center flex-col ml-5 md:ml-0 py-4">
                 <div className="cat">
                     {/* <Link href={`/posts/${_id}`}><a className="text-orange-600 hover:text-orange-800">{category || "Unknown"}</a></Link> */}
                     <Link

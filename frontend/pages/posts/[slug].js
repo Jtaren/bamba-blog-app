@@ -12,8 +12,6 @@ import fetcher from '../../lib/fetcher'
 import Spinner from '../../components/_child/spinner'
 import Error from '../../components/_child/error'
 import BlockContent from '@sanity/block-content-to-react'
-import PortableText from "@sanity/block-content-to-react"
-import SanityBlockContent from '@sanity/block-content-to-react'
 
 
 const serializers = {
@@ -74,7 +72,7 @@ const ptComponents = {
 
     return (
       <Format>
-    <section className='container mx-auto md:px-2 py-16 w-1/2'>
+    <section className='container mx-auto md:px-2 py-16 '>
 
     <h2 className="text-3xl text-center pr-6">Author</h2>
     <div className='flex justify-center'>
@@ -85,19 +83,19 @@ const ptComponents = {
       )}
 
     </div>
-    <div className="post py-10 justify-center text-left text-[1.5rem]">
+    <div className="post py-10 mx-auto justify-center w-1/2">
 
       <h1 className='font-bold text-4xl text-center pb-5'>{title}</h1>
       <div className="py-10">
-       {mainImage && <img src={urlFor(mainImage).width(900).url() || "/"} loading="lazy" width={900} height={600}/>}
+       {mainImage && <img className="w-[35rem] md:w-[44rem]" src={urlFor(mainImage).url() || "/"} loading="lazy" width={900} height={600}/>}
         </div>
-        <SanityBlockContent className="justify-center"
+        <BlockContent className="justify-center text-[1rem] md:text-[1.3rem]"
             blocks={body}
-            serializers={serializers}
+            serializers={serializers} 
             projectId="ek734hes"
             dataset="production"
             imageUrlBuilder={urlFor}
-            imageOptions={{ w: 320, h: 240, fit: 'max' }} 
+            imageOptions={{ w: 316, h: 240, fit: 'max' }} 
             
         />
         </div>
