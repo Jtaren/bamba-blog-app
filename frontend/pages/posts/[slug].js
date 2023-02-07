@@ -83,11 +83,11 @@ const ptComponents = {
       )}
 
     </div>
-    <div className="post py-10 mx-auto justify-center w-1/2">
+    <div className="post py-10 mx-auto justify-center w-[90%]">
 
       <h1 className='font-bold text-4xl text-center pb-5'>{title}</h1>
       <div className="py-10">
-       {mainImage && <img className="w-[35rem] md:w-[44rem]" src={urlFor(mainImage).url() || "/"} loading="lazy" width={900} height={600}/>}
+       {mainImage && <img className="mx-auto" src={urlFor(mainImage).url() || "/"} loading="lazy" width={900} height={600}/>}
         </div>
         <BlockContent className="justify-center text-[1rem] md:text-[1.3rem]"
             blocks={body}
