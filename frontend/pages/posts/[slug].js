@@ -12,6 +12,8 @@ import fetcher from '../../lib/fetcher'
 import Spinner from '../../components/_child/spinner'
 import Error from '../../components/_child/error'
 import BlockContent from '@sanity/block-content-to-react'
+import CommentSection from "../../components/commentSection"
+import CommentForm from '../../components/commentForm'
 
 
 const serializers = {
@@ -51,16 +53,16 @@ const ptComponents = {
   
   const Post = ({post}) => {
 
+    console.log(post);
     
     const {
       title = 'Missing title',
       name = 'Missing name',
       authorImage,
+      _id,
       mainImage,
       body
     } = post
-
-    console.log("Author data", post.author)
 
         // Blog Loader
     const { isLoading, isError } = fetcher('api/posts')
@@ -99,6 +101,9 @@ const ptComponents = {
             
         />
         </div>
+        <CommentForm postId={_id} post={post}/>
+        <CommentSection comments={post.comments} />
+
 
     </section>
     </Format>
@@ -111,7 +116,19 @@ const query = `*[_type == "post" && slug.current == $slug][0]
   "name": author->name,
   mainImage,
   "authorImage": author->image,
-  body
+  body,
+  _id,
+  'comments': *[
+    _type == "comment" && 
+    post._ref == ^._id 
+    ] {
+_id, 
+_ref,
+name, 
+email, 
+comment, 
+_createdAt
+}
 }`
 
 
