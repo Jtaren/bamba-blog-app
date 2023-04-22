@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export default function CommentForm({ postId }) {
-  console.log("The post ID", postId);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',

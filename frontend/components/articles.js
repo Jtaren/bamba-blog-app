@@ -34,6 +34,7 @@ export default function articles({post}) {
 }
 
 
+
 function Post( { postData } ){
     const {_id, title, _createdAt,publishedAt, slug="", mainImage, author, body } = postData;
 
