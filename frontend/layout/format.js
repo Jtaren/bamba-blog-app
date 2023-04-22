@@ -1,5 +1,6 @@
 import Header from "../components/header"
 import Footer from "../components/footer"
+import Section2 from "../components/section2"
 import Head from "next/head"
 
 export default function format( { children, posts }){
@@ -12,7 +13,7 @@ export default function format( { children, posts }){
             </Head>
 
             <Header posts={posts}></Header>
-            <main>{children}</main>
+            <main>{children}<Section2></Section2></main>
             <Footer></Footer>
         </>
     )
